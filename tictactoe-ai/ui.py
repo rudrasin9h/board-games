@@ -1,3 +1,2 @@
-import pygame
-import config
+import pygame as pg
 
