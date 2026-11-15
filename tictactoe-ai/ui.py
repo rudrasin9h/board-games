@@ -21,7 +21,8 @@ bg_color = "#2E4E45"
 
 center_set = []
 move_set = []
-target = [10,10]
+target = [999,999]
+
 
 def draw_button(x,y,l,b,bg,text,w = 0):
     pygame.draw.rect(disp,bg,(x,y,l,b),width = w)
@@ -83,7 +84,7 @@ def make_move():
                 target[0] = 2
     
     else:
-        pass
+        print("Overclick!")
 
 def drawO(c):
     global side,cur_player
@@ -131,6 +132,13 @@ def reset_board():
     center_set.clear()
     cur_player = "p1"
     
+def draw_win():
+    #Get the addresses of winning row/col/diag from array
+    pass
+    #choose x and y coords of start and end points 
+
+    #draw the line
+
 def run_game():
     global running,cur_player
     while running:
@@ -150,8 +158,8 @@ def run_game():
                         validate_move(cur_player, draw_center)
                         winner = logic.check_win(logic.board)
 
-                        if winner:
-                            print(f"{winner} wins!")
+                        if winner[0]:
+                            print(f"{winner[1]} wins!")
                             reset_board()
                         else:
                             update_player()
@@ -167,5 +175,3 @@ def run_game():
 
     pygame.quit()
     sys.exit()
-
-run_game()

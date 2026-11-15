@@ -2,4 +2,4 @@ import ui
 import config
 import logic
 
-ui.runGame()
+ui.run_game()

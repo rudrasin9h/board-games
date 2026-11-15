@@ -13,12 +13,21 @@ def update_board(row: int, col: int, player: str) -> bool:
     board[row, col] = 1 if player == "p1" else -1
     return True
 
-def check_win(arr: np.ndarray) -> str | None:
+def check_win(arr: np.ndarray) -> list:
     lines = list(arr) + list(arr.T)
+    rows = list(arr)
+    cols = list(arr.T)
+    # print("Rows:",rows)
+    # print("Cols:",cols)
     lines.extend((np.diag(arr), np.diag(np.fliplr(arr))))
+    result = [False,'winner',(999,999)]
 
     for line in lines:
         if line[0] != 0 and line[0] == line[1] == line[2]:
-            return "Player 1" if line[0] == 1 else "Player 2"
+            if line[0] == 1 :
+                result[1] = "Player 1" 
+            else:
+                result[1] = "Player 2"
+            result[0] = True
 
-    return None
+    return result
